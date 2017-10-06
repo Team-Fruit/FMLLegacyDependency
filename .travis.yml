@@ -36,9 +36,8 @@ deploy:
       condition: '! "$TRAVIS_BRANCH" =~ ^(dev\\-|feature\\/).*$'
   - provider: bintray
     file: ".bintray.json"
-    user: "team-fruit"
-    key:
-      secure: "Gt3WrfxDYGwyFawp43NPvYmtBgPyOcXVOrulXvTzjZcEfPfVJrRfLVbBdx/bKkkKpo+qz0gUtTdTZ2CYsUTxnQvph99MCysvt4bi7msAWJ9a24+Xtuav9MTTAYRE9nxHoPxdQLi42RxYtq4+TOUGW9ehu3ZXUaSIAyT7lfqgsMQtR/YbAUT8w0PSgdYPILoWPxLTC2ocZl0FmZFU2TjZ1mVSMJI3uBGtdQNaGY0LXDojjcWWBp9Wawf60NaR3B5Lkm083+krU/vqvqM0Ic4FWY/wYCnUIZf8TJnnx00gdR7NegdZzbh+ikY6/3q8LeAEzthA6Sk2zhP+QH7PS5QVk32r46j7TO+Mqme4KNBEh+4c6cxSXJV9oYDOUA8dR6NzUJzC3jH8BRIAamCzlxA2iBbD8CEY1dz7uQlcfCGxp93Piq1eOIv8/q9tt+vRRpFI5dKTBlabGnxgEXxQNj0Tw2WXt1YLAyMDiPV/+6uz4MI4Tsp4HmJsHzx0ov7pxJ9GSe97p4tCWZixyfREURSeikhUh/JAt/F2WSSV04Qt1uT34sLaVRG3XTWQFjkjW11mE/dyFpTE9DEVtmD6pr/07tm+QY5vwBh29wnAx+3wRw/F7HrYamiQ6QTiYz8inWGRaAeq1IDjmVfj2kmejbr2QY76xE7BGoH9DShXdMowfEI="
+    user: ${BINTRAY_USER}
+    key: ${BINTRAY_KEY}
     all_branches: true
     skip_cleanup: true
     on:
