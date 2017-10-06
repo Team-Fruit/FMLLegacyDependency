@@ -1,0 +1,44 @@
+language: java
+jdk: oraclejdk8
+branches:
+  except:
+    - /^build@.*/
+install:
+  - mvn clean install
+cache:
+  directories:
+    - .autoconf
+    - $HOME/.m2
+notifications:
+  email: false
+  webhooks:
+    urls:
+      secure: "Wh1a4afsFv5RoqjLnqN+ikDx4tsn+0/2jTI7uCsYZ8moH2PLsOrwS0GTC29xccSE7K0ZuHVGJTl1ewV9HN9/B6tGdBG60FautB5bYL1ALkWNn9RC6Rg0OGC361Nr/dI8kA9X495ADr7FH1GTIhhV26t7Ncjs53gczyNeiDUpEj6VZyIokckaC+6V5b1npaddFaj80qKaqkcvQJzVu95mqzB/Il28A9CQ013Afnpo6RYT5scmv1/mFXFev1kVDxMqEclMpDxap3UR3roI11KsHFn7t4laXGKGlDraqR3kWtSvP+J/wrKj5nSkp11Lxf+qpgjpf6WaU8g64WWrmpdqxeJMVN4/niTiQvvyk+6gMO02l5vVUyhBNwGuYESHfOsu90r2Sek2kAyvgR/ccUWdSA5/w+pcZ8swkOs081S54W6+A3abFjyb2kMZTXWEhpvRw4VdkuK5FU/nG6VPqSHW/U+YXHWn245AgTBevGaH68aFrhvc6ENJ6NZCaKO3KZ8+oPHycRJhRZjM8gI8+3oUoER611kmG5d7TRqP7UI1LVkIOYD/czrq0XCC0K1vSMJbe1SdfAX/RMWKPJLrkiPAtxIdft5lAVU61H2ebPfO+ORrIVSnkNPPUWwVZ3bwEWwrlJyJK3oobCpSki7DdzephGlE6QzKifUG4iui3nboJFo="
+before_deploy:
+  - mvn package
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=build@${TRAVIS_BRANCH}#${TRAVIS_BUILD_NUMBER}
+  - git tag ${GIT_TAG} -a -m "Generated tag from TravisCI build ${TRAVIS_BUILD_NUMBER}"
+  - git push --quiet https://${GITHUB_TOKEN}@github.com/Team-Fruit/FMLLegacyDependency ${GIT_TAG} > /dev/null 2>&1
+  - echo "Creating description file for bintray."
+  - ./tools/travis_postbuild.sh
+deploy:
+  - provider: releases
+    prerelease: true
+    api_key: ${GITHUB_TOKEN}
+    file_glob: true
+    file: target/*.jar
+    all_branches: true
+    skip_cleanup: true
+    on:
+      tags: false
+      condition: '! "$TRAVIS_BRANCH" =~ ^(dev\\-|feature\\/).*$'
+  - provider: bintray
+    file: ".bintray.json"
+    user: "team-fruit"
+    key: ${BINTRAY_KEY}
+    all_branches: true
+    skip_cleanup: true
+    on:
+      tags: true
