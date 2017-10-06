@@ -5,10 +5,12 @@
 # allow any
 !*.md
 !src/
+!tools/
 !.gitmodules
 !.gitignore
 !.gitattributes
 !.travis.yml
-!pom.xml
+!settings.xml
+!pom.tmp
 !LICENSE.md
 !README.md
