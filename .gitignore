@@ -5,6 +5,7 @@
 # allow any
 !*.md
 !src/
+!tools/
 !.gitmodules
 !.gitignore
 !.gitattributes
