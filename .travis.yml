@@ -22,7 +22,7 @@ before_deploy:
   - git tag ${GIT_TAG} -a -m "Generated tag from TravisCI build ${TRAVIS_BUILD_NUMBER}"
   - git push --quiet https://${GITHUB_TOKEN}@github.com/Team-Fruit/FMLLegacyDependency ${GIT_TAG} > /dev/null 2>&1
   - echo "Creating description file for bintray."
-  - ./tools/travis_postbuild.sh
+  - sh tools/travis_postbuild.sh
 deploy:
   - provider: releases
     prerelease: true
