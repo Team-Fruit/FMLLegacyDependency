@@ -4,7 +4,7 @@ branches:
   except:
     - /^build@.*/
 install:
-  - mvn clean install
+  - mvn clean install -Dmy.version=${TRAVIS_TAG}
 cache:
   directories:
     - .autoconf
@@ -36,7 +36,7 @@ deploy:
       condition: '! "$TRAVIS_BRANCH" =~ ^(dev\\-|feature\\/).*$'
   - provider: script
     skip_cleanup: true
-    script: "mvn deploy"
+    script: "mvn deploy -Dmy.version=${TRAVIS_TAG}"
     on:
       all_branches: true
       tags: true

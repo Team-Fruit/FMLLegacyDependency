@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.teamfruit</groupId>
 	<artifactId>fmllegacydependency</artifactId>
-	<version>${env.TRAVIS_TAG}</version>
+	<version>${my.version}</version>
 	<name>FMLLegacyDependency</name>
 	<packaging>jar</packaging>
 	<description>FML cpw.mods.fml package facade</description>
@@ -14,6 +14,7 @@
 		<bintray.subject>team-fruit</bintray.subject>
 		<bintray.repo>mods</bintray.repo>
 		<bintray.package>FMLLegacyDependency</bintray.package>
+		<my.version>unknown</my.version>
 	</properties>
 
 	<dependencies>
