@@ -9,6 +9,13 @@
 	<packaging>jar</packaging>
 	<description>FML cpw.mods.fml package facade</description>
 
+	<licenses>
+		<license>
+			<name>GNU General Lesser Public License (LGPL) version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+		</license>
+	</licenses>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<bintray.subject>team-fruit</bintray.subject>
@@ -39,7 +46,18 @@
 				<version>2.1.2</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<executions>
+					<execution>
 						<goals>
 							<goal>jar</goal>
 						</goals>
