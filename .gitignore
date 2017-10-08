@@ -9,8 +9,8 @@
 !.gitmodules
 !.gitignore
 !.gitattributes
-!.bintray.in
 !.travis.yml
+!settings.xml
 !pom.xml
 !LICENSE.md
 !README.md
