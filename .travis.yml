@@ -4,8 +4,8 @@ branches:
   except:
     - /^build@.*/
 install:
-  - [ -n "${TRAVIS_TAG}" ] && mvn clean install -Dmy.version=${TRAVIS_TAG}
-  - [ -n "${TRAVIS_TAG}" ] || mvn clean install
+  - '[ -n "${TRAVIS_TAG}" ] && mvn clean install -Dmy.version=${TRAVIS_TAG}'
+  - '[ -n "${TRAVIS_TAG}" ] || mvn clean install'
 cache:
   directories:
     - .autoconf
