@@ -4,7 +4,7 @@ branches:
   except:
     - /^build@.*/
 before_install:
-  - "VERSIONVAL=unknown; if [ -n \"${TRAVIS_TAG}\" ]; then VERSIONVAL=${TRAVIS_TAG}; fi; if [ -n \"${TRAVIS_BUILD_NUMBER}\" ]; then VERSIONVAL=r${TRAVIS_BUILD_NUMBER}; fi; sed -e s%@VERSION@%${VERSIONVAL}% pom.tmp > pom.xml"
+  - "VERSIONVAL=unknown; if [ -n \"${TRAVIS_TAG}\" ]; then VERSIONVAL=${TRAVIS_TAG}; elif [ -n \"${TRAVIS_BUILD_NUMBER}\" ]; then VERSIONVAL=r${TRAVIS_BUILD_NUMBER}; fi; sed -e s%@VERSION@%${VERSIONVAL}% pom.tmp > pom.xml"
 install:
   - mvn clean install
 cache:
