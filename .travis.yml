@@ -4,7 +4,7 @@ branches:
   except:
     - /^build@.*/
 install:
-  - "sh -c 'if [ -n \"${TRAVIS_TAG}\" ]; then mvn clean install -Dmy.version=${TRAVIS_TAG}; else mvn clean install; fi"
+  - "sh -c 'if [ -n \"${TRAVIS_TAG}\" ]; then mvn clean install -Dmy.version=${TRAVIS_TAG}; else mvn clean install; fi'"
 cache:
   directories:
     - .autoconf
