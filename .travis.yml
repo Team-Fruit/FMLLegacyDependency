@@ -3,8 +3,10 @@ jdk: oraclejdk8
 branches:
   except:
     - /^build@.*/
+before_install:
+  - "VERSIONVAL=unknown; if [ -n \"${TRAVIS_TAG}\" ]; then VERSIONVAL=${TRAVIS_TAG}; fi; if [ -n \"${TRAVIS_BUILD_NUMBER}\" ]; then VERSIONVAL=r${TRAVIS_BUILD_NUMBER}; fi; sed -e s%@VERSION@%${VERSIONVAL}% pom.tmp > pom.xml"
 install:
-  - "sh -c \"if [ -n \\\"${TRAVIS_TAG}\\\" ]; then mvn clean install -Dmy.version=${TRAVIS_TAG}; else mvn clean install; fi\""
+  - mvn clean install
 cache:
   directories:
     - .autoconf
