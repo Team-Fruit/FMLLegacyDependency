@@ -1,4 +1,4 @@
 package cpw.mods.fml.common.event;
 
-public class FMLInterModComms {
+public abstract class FMLInterModComms {
 }

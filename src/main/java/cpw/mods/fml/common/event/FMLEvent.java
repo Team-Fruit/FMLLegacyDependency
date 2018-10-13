@@ -1,4 +1,4 @@
 package cpw.mods.fml.common.event;
 
-public interface FMLEvent {
+public abstract class FMLEvent {
 }

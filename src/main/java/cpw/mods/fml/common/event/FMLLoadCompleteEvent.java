@@ -1,4 +1,4 @@
 package cpw.mods.fml.common.event;
 
-public interface FMLLoadCompleteEvent extends FMLStateEvent {
+public abstract class FMLLoadCompleteEvent extends FMLStateEvent {
 }

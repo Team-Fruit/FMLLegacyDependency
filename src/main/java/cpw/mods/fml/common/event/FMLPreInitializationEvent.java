@@ -4,10 +4,10 @@ import java.io.File;
 
 import org.apache.logging.log4j.Logger;
 
-public interface FMLPreInitializationEvent extends FMLStateEvent {
-	public File getSourceFile();
+public abstract class FMLPreInitializationEvent extends FMLStateEvent {
+	public abstract File getSourceFile();
 
-	public File getSuggestedConfigurationFile();
+	public abstract File getSuggestedConfigurationFile();
 
-	public Logger getModLog();
+	public abstract Logger getModLog();
 }
