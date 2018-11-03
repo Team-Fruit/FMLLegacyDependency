@@ -11,6 +11,7 @@
 !.gitattributes
 !.travis.yml
 !settings.xml
-!pom.tmp
+!pom.xml
+!pom.travis.xml
 !LICENSE.md
 !README.md
