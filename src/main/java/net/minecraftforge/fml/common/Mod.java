@@ -18,6 +18,8 @@ public @interface Mod {
 
 	String guiFactory() default "";
 
+	String updateJSON() default "";
+
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.FIELD })
 	public @interface Instance {
